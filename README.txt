@@ -20,4 +20,9 @@ Todas las funciones de estos 2 últimos añadidos las hemos ido añadiendo en el
 
 Para los toast hemos instalado un plugin con "npm i react-toastify" que nos permite mandar los mensajes al añadir, eliminar, editar...
 
+**************************
 Nos pasamos a Laravel...
+**************************
+Instalamos axios (npm i axios). Y empezamos a orientar la vista de React conectada a la api de Laravel sin utilizar los js de categorias y productos de la carpeta data.
+Empezamos con las categorias. Hemos creado dentro de la carpeta config un archivo js (axios.js) para hacer de cliente en las comunicaciones axios.
+Y en el QuioscoProvider hemos ajustado el código en la funcion obtenerCategorias para recogerlar directamente de la api de Laravel.
