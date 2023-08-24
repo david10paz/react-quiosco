@@ -26,3 +26,8 @@ Nos pasamos a Laravel...
 Instalamos axios (npm i axios). Y empezamos a orientar la vista de React conectada a la api de Laravel sin utilizar los js de categorias y productos de la carpeta data.
 Empezamos con las categorias. Hemos creado dentro de la carpeta config un archivo js (axios.js) para hacer de cliente en las comunicaciones axios.
 Y en el QuioscoProvider hemos ajustado el código en la funcion obtenerCategorias para recogerlar directamente de la api de Laravel.
+
+Instalamos SWR (npm i swr) que es una Biblioteca React Hooks para la obtención de datos. En Inicio.jsx puedes comprobarlo, por ejemplo, a la hora de cargar los productos a traves de la llamada api a Laravel
+Hemos creado un hook useAuth.js para comunicar llamadas a Register.jsx y Login.jsx. En el de por sí se encarga de hacer constantes llamadas repetidas (useEffect) de si estas logueado o no, a traves de un token guardado en la memoria 
+del navegador que se le añade o se le quita dependiendo de la funcion login, register o logout que se lanze en este useAuth.js
+En Sidebar.jsx llamamos a la funcion de logout de este hook.
