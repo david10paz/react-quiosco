@@ -20,9 +20,15 @@ const QuioscoProvider = ({ children }) => {
     }, [pedido])
 
     const obtenerCategorias = async () => {
+        const token = localStorage.getItem('AUTH_TOKEN');
+
         try {
             console.log(import.meta.env.VITE_API_URL)
-            const { data } = await clienteAxios('/api/categorias')
+            const { data } = await clienteAxios('/api/categorias', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
             setCategorias(data.data);
             setCategoriaActual(data.data[0]);
         } catch (error) {
@@ -91,12 +97,58 @@ const QuioscoProvider = ({ children }) => {
                 setPedido([])
             }, 1000)
         } catch (error) {
+            console.log(error);
+        }
+    }
 
+    const handleClickCompletarPedido = async id => {
+        //console.log(id);
+        const token = localStorage.getItem('AUTH_TOKEN');
+
+        try {
+            const { data } = await clienteAxios.put(`/api/pedidos/${id}`, null, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            toast.success(data.message);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const handleClickProductoAgotado = async id => {
+        //console.log(id);
+        const token = localStorage.getItem('AUTH_TOKEN');
+
+        try {
+            const { data } = await clienteAxios.put(`/api/productos/${id}`, null, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            toast.success(data.message);
+        } catch (error) {
+            console.log(error);
         }
     }
 
     return (<QuioscoContext.Provider value={{
-        categorias, categoriaActual, handleClickCategoria, modal, handleClickModal, producto, handleSetProducto, pedido, handleAgregarPedido, handleEditarCantidad, handleEliminarProductoPedido, total, handleSubmitNuevaOrden
+        categorias,
+        categoriaActual,
+        handleClickCategoria,
+        modal,
+        handleClickModal,
+        producto,
+        handleSetProducto,
+        pedido,
+        handleAgregarPedido,
+        handleEditarCantidad,
+        handleEliminarProductoPedido,
+        total,
+        handleSubmitNuevaOrden,
+        handleClickCompletarPedido,
+        handleClickProductoAgotado
     }}>{children}</QuioscoContext.Provider>)
 
 }

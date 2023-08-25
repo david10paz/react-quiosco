@@ -33,3 +33,7 @@ del navegador que se le añade o se le quita dependiendo de la funcion login, re
 En Sidebar.jsx llamamos a la funcion de logout de este hook.
 
 En QuioscoProvider.jsx añadimos la función para hacer llamar a la confirmación de la nueva orden pedido. Y en Resumen.jsx llamamos a dicha función (handleSubmitNuevaOrden).
+
+Añadimos el panel de admin para ver las ordenes y completarlas + quitar productos que ya no estén disponibles.
+Añadimos las nuevas rutas al router.jsx, añadimos funciones a el QuioscoProvider, y las llamamos en Producto.jsx, Inicio.jsx, Ordenes.jsx, Productos.jsx
+En el useAuth aadimos dos condiciones más para restringir que los usuarios que nos son admin no puedan entrar a /admin como si nada.
