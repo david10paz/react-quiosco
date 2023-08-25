@@ -22,7 +22,7 @@ const QuioscoProvider = ({ children }) => {
     const obtenerCategorias = async () => {
         try {
             console.log(import.meta.env.VITE_API_URL)
-            const {data} = await clienteAxios('/api/categorias')
+            const { data } = await clienteAxios('/api/categorias')
             setCategorias(data.data);
             setCategoriaActual(data.data[0]);
         } catch (error) {
@@ -73,8 +73,30 @@ const QuioscoProvider = ({ children }) => {
         toast.success('Producto eliminado del pedido')
     }
 
+    const handleSubmitNuevaOrden = async () => {
+
+        const token = localStorage.getItem('AUTH_TOKEN');
+
+        try {
+            const { data } = await clienteAxios.post('/api/pedidos', {
+                total,
+                productos: pedido,
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            toast.success(data.message);
+            setTimeout(() => {
+                setPedido([])
+            }, 1000)
+        } catch (error) {
+
+        }
+    }
+
     return (<QuioscoContext.Provider value={{
-        categorias, categoriaActual, handleClickCategoria, modal, handleClickModal, producto, handleSetProducto, pedido, handleAgregarPedido, handleEditarCantidad, handleEliminarProductoPedido, total
+        categorias, categoriaActual, handleClickCategoria, modal, handleClickModal, producto, handleSetProducto, pedido, handleAgregarPedido, handleEditarCantidad, handleEliminarProductoPedido, total, handleSubmitNuevaOrden
     }}>{children}</QuioscoContext.Provider>)
 
 }

@@ -31,3 +31,5 @@ Instalamos SWR (npm i swr) que es una Biblioteca React Hooks para la obtención 
 Hemos creado un hook useAuth.js para comunicar llamadas a Register.jsx y Login.jsx. En el de por sí se encarga de hacer constantes llamadas repetidas (useEffect) de si estas logueado o no, a traves de un token guardado en la memoria 
 del navegador que se le añade o se le quita dependiendo de la funcion login, register o logout que se lanze en este useAuth.js
 En Sidebar.jsx llamamos a la funcion de logout de este hook.
+
+En QuioscoProvider.jsx añadimos la función para hacer llamar a la confirmación de la nueva orden pedido. Y en Resumen.jsx llamamos a dicha función (handleSubmitNuevaOrden).
