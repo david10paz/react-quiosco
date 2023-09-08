@@ -14,6 +14,7 @@ export default function AdminSidebar() {
             <nav className="flex flex-col p-4">
                 <Link to="/admin" className="font-bold text-lg">Ordenes</Link>
                 <Link to="/admin/productos" className="font-bold text-lg">Productos</Link>
+                <Link to="/admin/productos-agotados" className="font-bold text-lg text-red-400">Productos agotados</Link>
             </nav>
 
             <div className="my-5 px-5">

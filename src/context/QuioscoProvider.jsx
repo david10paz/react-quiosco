@@ -133,6 +133,22 @@ const QuioscoProvider = ({ children }) => {
         }
     }
 
+    const handleClickRecuperarProductoAgotado = async id => {
+        //console.log(id);
+        const token = localStorage.getItem('AUTH_TOKEN');
+
+        try {
+            const { data } = await clienteAxios.put(`/api/productos-agotados/${id}`, null, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            toast.success(data.message);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (<QuioscoContext.Provider value={{
         categorias,
         categoriaActual,
@@ -148,7 +164,8 @@ const QuioscoProvider = ({ children }) => {
         total,
         handleSubmitNuevaOrden,
         handleClickCompletarPedido,
-        handleClickProductoAgotado
+        handleClickProductoAgotado,
+        handleClickRecuperarProductoAgotado
     }}>{children}</QuioscoContext.Provider>)
 
 }

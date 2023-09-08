@@ -7,6 +7,7 @@ import Register from "./views/Register";
 import AdminLayout from "./layouts/AdminLayout";
 import Productos from "./views/Productos";
 import Ordenes from "./views/Ordenes";
+import ProductosAgotados from "./views/ProductosAgotados";
 
 const router = createBrowserRouter([
     {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
             {
                 path: '/admin/productos',
                 element: <Productos/>
+            },
+            {
+                path: '/admin/productos-agotados',
+                element: <ProductosAgotados/>
             },
         ]
     },
